@@ -1,6 +1,6 @@
-name: khan-md
+name: msela-chui-xmd
 services:
-  - name: criss-ai-service
+  - name: msela-chui-xmd-service
     type: web
     ports:
       - 5000
