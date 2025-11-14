@@ -14,7 +14,7 @@ class WhatsAppBot {
     // Initialize the bot
     async initialize() {
         try {
-            console.log('🔧 Inaanzisha WhatsApp Bot...');
+            console.log('🔧 Initializing WhatsApp Bot...');
             
             // Load authentication state
             const { state, saveCreds } = await useMultiFileAuthState('./auth_info');
@@ -39,10 +39,10 @@ class WhatsAppBot {
             // Handle connection events
             this.setupEventHandlers();
             
-            console.log('✅ Bot imeanzishwa kikamilifu!');
+            console.log('✅ Bot initialized successfully!');
             
         } catch (error) {
-            console.error('❌ Hitilafu katika kuanzisha bot:', error);
+            console.error('❌ Error initializing bot:', error);
         }
     }
 
@@ -53,14 +53,14 @@ class WhatsAppBot {
             
             if (connection === 'close') {
                 const shouldReconnect = lastDisconnect?.error?.output?.statusCode !== DisconnectReason.loggedOut;
-                console.log(shouldReconnect ? '🔁 Tunaunganisha tena...' : '❌ Umeingia nje, tafadhali weka upya bot.');
+                console.log(shouldReconnect ? '🔁 Reconnecting...' : '❌ Logged out, please restart the bot.');
                 
                 if (shouldReconnect) {
                     this.initialize();
                 }
             } else if (connection === 'open') {
                 this.isConnected = true;
-                console.log('✅ Imewasilishwa kwa mafanikio!');
+                console.log('✅ Connected successfully!');
                 this.sendWelcomeMessage();
             }
         });
@@ -83,9 +83,9 @@ class WhatsAppBot {
                         '';
             
             const sender = message.key.remoteJid;
-            const pushname = message.pushName || 'Mtemjiaji';
+            const pushname = message.pushName || 'User';
 
-            console.log(`📩 Ujumbe kutoka kwa ${pushname}: ${text}`);
+            console.log(`📩 Message from ${pushname}: ${text}`);
 
             // Command handlers
             if (text.startsWith('!')) {
@@ -93,7 +93,7 @@ class WhatsAppBot {
             }
 
         } catch (error) {
-            console.error('❌ Hitilafu katika kushughulikia ujumbe:', error);
+            console.error('❌ Error handling message:', error);
         }
     }
 
@@ -102,52 +102,70 @@ class WhatsAppBot {
         const cmd = command.toLowerCase().trim();
         
         switch (cmd) {
-            case '!hii':
+            case '!hi':
             case '!hello':
-                await this.sendMessage(sender, `👋 Halo ${pushname}! Ninafanya kazi vizuri.`);
+                await this.sendMessage(sender, `👋 Hello ${pushname}! I'm working fine.`);
                 break;
                 
-            case '!muda':
-                await this.sendMessage(sender, `🕐 Muda wa sasa: ${new Date().toLocaleString()}`);
+            case '!time':
+                await this.sendMessage(sender, `🕐 Current time: ${new Date().toLocaleString()}`);
                 break;
                 
             case '!info':
                 const botInfo = `
-🤖 *TAARIFA ZA BOT*
+🤖 *BOT INFORMATION*
 
-*Jina:* WhatsApp Bot
-*Mwenyeji:* Developer
-*Muda:* ${new Date().toLocaleString()}
-*Status:* Imewasilishwa
+*Name:* WhatsApp Bot
+*Owner:* Developer
+*Time:* ${new Date().toLocaleString()}
+*Status:* Connected
                 `;
                 await this.sendMessage(sender, botInfo);
                 break;
                 
-            case '!saidia':
             case '!help':
                 const helpText = `
-🆘 *Msaada wa Commands*
+🆘 *COMMAND HELP*
 
-*!hii* - Salamu za bot
-*!muda* - Onyesha muda wa sasa
-*!info* - Taarifa za bot
-*!saidia* - Menu ya msaada
-*!admin* - Wasiliana na mwenyeji
+*!hi* - Greet the bot
+*!time* - Show current time
+*!info* - Bot information
+*!help* - Help menu
+*!owner* - Contact the owner
+*!status* - Check bot status
+*!ping* - Test response time
                 `;
                 await this.sendMessage(sender, helpText);
                 break;
                 
-            case '!admin':
+            case '!owner':
                 await this.sendMessage(sender, 
-                    `📞 *Wasiliana na Mwenyeji:*\n` +
+                    `📞 *CONTACT OWNER:*\n` +
                     `Email: developer@example.com\n` +
                     `WhatsApp: +255XXX XXX XXX`
                 );
                 break;
+
+            case '!status':
+                const status = this.isConnected ? '🟢 ONLINE' : '🔴 OFFLINE';
+                await this.sendMessage(sender, 
+                    `🤖 *BOT STATUS*\n` +
+                    `Status: ${status}\n` +
+                    `Uptime: ${process.uptime().toFixed(0)} seconds\n` +
+                    `Memory: ${(process.memoryUsage().rss / 1024 / 1024).toFixed(2)} MB`
+                );
+                break;
+
+            case '!ping':
+                const start = Date.now();
+                await this.sendMessage(sender, '🏓 Pong!');
+                const latency = Date.now() - start;
+                await this.sendMessage(sender, `⏱️ Response time: ${latency}ms`);
+                break;
                 
             default:
                 await this.sendMessage(sender, 
-                    `❌ Amri haijulikani! Tumia *!saidia* kuona orodha ya amri.`
+                    `❌ Unknown command! Use *!help* to see available commands.`
                 );
         }
     }
@@ -157,21 +175,21 @@ class WhatsAppBot {
         try {
             await this.sock.sendMessage(jid, { text: text });
         } catch (error) {
-            console.error('❌ Hitilafu katika kutuma ujumbe:', error);
+            console.error('❌ Error sending message:', error);
         }
     }
 
     // Send welcome message to owner
     async sendWelcomeMessage() {
-        const ownerJid = '255XXXXXXXXX@s.whatsapp.net'; // Badilisha na namba yako
+        const ownerJid = '255XXXXXXXXX@s.whatsapp.net'; // Replace with your number
         const welcomeMsg = `
-🎉 *BOT IMESHAWASHWA KIKAMILIFU!*
+🎉 *BOT STARTED SUCCESSFULLY!*
 
-*Muda:* ${new Date().toLocaleString()}
-*Status:* Imewasilishwa
+*Time:* ${new Date().toLocaleString()}
+*Status:* Connected
 *Version:* 1.0.0
 
-Tumia *!saidia* kuona menu ya amri.
+Use *!help* to see command menu.
         `;
         
         await this.sendMessage(ownerJid, welcomeMsg);
@@ -183,12 +201,36 @@ Tumia *!saidia* kuona menu ya amri.
             const buffer = await this.sock.downloadMediaMessage(message);
             const filePath = path.join(__dirname, 'media', filename);
             
+            // Create media directory if it doesn't exist
+            if (!fs.existsSync(path.join(__dirname, 'media'))) {
+                fs.mkdirSync(path.join(__dirname, 'media'));
+            }
+            
             fs.writeFileSync(filePath, buffer);
             return filePath;
         } catch (error) {
-            console.error('❌ Hitilafu katika kupakua media:', error);
+            console.error('❌ Error downloading media:', error);
             return null;
         }
+    }
+
+    // Send image method
+    async sendImage(jid, imagePath, caption = '') {
+        try {
+            const imageBuffer = fs.readFileSync(imagePath);
+            await this.sock.sendMessage(jid, {
+                image: imageBuffer,
+                caption: caption
+            });
+        } catch (error) {
+            console.error('❌ Error sending image:', error);
+        }
+    }
+
+    // Check if user is bot owner
+    isOwner(jid) {
+        const ownerJid = '255XXXXXXXXX@s.whatsapp.net'; // Replace with your number
+        return jid === ownerJid;
     }
 }
 
@@ -203,9 +245,33 @@ class BotUtils {
         return jid.endsWith('@g.us');
     }
 
+    static isUserJid(jid) {
+        return jid.endsWith('@s.whatsapp.net');
+    }
+
     static extractCommand(text) {
         const match = text.match(/^!(\w+)/);
         return match ? match[1].toLowerCase() : null;
+    }
+
+    static extractArgs(text) {
+        return text.split(' ').slice(1).join(' ');
+    }
+}
+
+// Configuration class
+class BotConfig {
+    static get settings() {
+        return {
+            ownerNumber: '255XXXXXXXXX',
+            botName: 'WhatsApp Bot',
+            prefix: '!',
+            maxUploadSize: 10000000,
+            autoReadMessages: false,
+            antiDelete: true,
+            welcomeMessage: 'Welcome to the bot! Use !help for commands.',
+            autoReply: true
+        };
     }
 }
 
@@ -217,18 +283,25 @@ async function startBot() {
 
 // Handle process termination
 process.on('SIGINT', () => {
-    console.log('\n👋 Kwaheri! Bot inaachwa...');
+    console.log('\n👋 Goodbye! Bot is shutting down...');
+    process.exit(0);
+});
+
+process.on('SIGTERM', () => {
+    console.log('\n🛑 Bot terminated!');
     process.exit(0);
 });
 
 process.on('uncaughtException', (error) => {
-    console.error('❌ Hitilafu isiyotarajiwa:', error);
+    console.error('❌ Uncaught exception:', error);
 });
 
 process.on('unhandledRejection', (reason, promise) => {
-    console.error('❌ Ahadi ilikataa:', reason);
+    console.error('❌ Promise rejection:', reason);
 });
 
 // Start the bot
-console.log('🚀 Inaanzisha WhatsApp Bot...');
+console.log('🚀 Starting WhatsApp Bot...');
+console.log('📋 Available commands: !hi, !time, !info, !help, !owner, !status, !ping');
+
 startBot().catch(console.error);
