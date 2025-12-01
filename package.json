@@ -1,6 +1,6 @@
 
 {
-  "name": "jeepers creeper",
+  "name": "msela chui",
   "version": "2.1.0",
   "description": "Advanced WhatsApp bot using Baileys",
   "main": "index.js",
@@ -23,9 +23,9 @@
     "bmwxmd",
     "quantum",
     "whatsapp-bot",
-    "Ibrahim-Adams"
+    "Msela-chui"
   ],
-  "author": "sir bravin",
+  "author": "mselachui",
   "license": "ISC",
   "dependencies": {
     "@adiwajshing/keyed-db": "^0.2.4",        
