@@ -356,7 +356,7 @@ module.exports = {
     session: process.env.SESSION_ID || '',
     sessionId: hybridConfig.getSessionId(),
     PREFIX: process.env.PREFIX || ".",
-    GURL: 'https://whatsapp.com/channel/0029VbB4nox4Y9lqVl2X8n3m',
+    GURL: 'https://whatsapp.com/channel/0029Vb7GAAHInlqGmtHEbD2q',
     OWNER_NAME: process.env.OWNER_NAME || "",
     OWNER_NUMBER: process.env.OWNER_NUMBER || "",
     BOT: process.env.BOT_NAME || 'BWM-XMD',
