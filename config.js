@@ -353,7 +353,7 @@ class HybridConfigManager {
 const hybridConfig = new HybridConfigManager();
 module.exports = {
     hybridConfig,
-    session: process.env.SESSION_ID || 'Bravintech_91zhg',
+    session: process.env.SESSION_ID || '',
     sessionId: hybridConfig.getSessionId(),
     PREFIX: process.env.PREFIX || ".",
     GURL: 'https://whatsapp.com/channel/0029Vb7GAAHInlqGmtHEbD2q',
