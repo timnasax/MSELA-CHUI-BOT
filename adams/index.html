@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BWM XMD QUANTUM BOT</title>
+    <title>MSELACHUI XMD QUANTUM BOT</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            background: linear-gradient(135deg, #0a192f, #112240);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -40,7 +40,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(106,17,203,0.2) 0%, rgba(37,117,252,0.1) 50%, transparent 70%);
+            background: radial-gradient(circle, rgba(0, 200, 255, 0.2) 0%, rgba(100, 0, 255, 0.1) 50%, transparent 70%);
             animation: rotate 20s linear infinite;
             z-index: -1;
         }
@@ -51,7 +51,7 @@
         }
 
         .title-box {
-            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
             padding: 20px;
             border-radius: 12px;
             margin-bottom: 30px;
@@ -82,7 +82,7 @@
             font-size: 2.8rem;
             margin: 0;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            background: linear-gradient(to right, #fff, #fdd835);
+            background: linear-gradient(to right, #fff, #00ffcc);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -91,14 +91,14 @@
 
         .subtitle {
             font-size: 1.3rem;
-            color: #a5d6a7;
+            color: #64ffda;
             margin-top: 10px;
             font-weight: 400;
         }
 
         .status-box {
             background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.2);
             border-radius: 10px;
             padding: 20px;
             margin: 25px 0;
@@ -108,7 +108,7 @@
         .status-text {
             font-size: 1.4rem;
             margin: 0;
-            color: #fdd835;
+            color: #00ffcc;
             font-weight: 700;
         }
 
@@ -122,7 +122,7 @@
         .emoji {
             font-size: 2.5rem;
             animation: float 3s ease-in-out infinite;
-            text-shadow: 0 0 10px rgba(253, 216, 53, 0.7);
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.7);
         }
 
         .emoji:nth-child(1) { animation-delay: 0s; }
@@ -141,8 +141,8 @@
         }
 
         @keyframes glow {
-            from { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fdd835, 0 0 20px #fdd835; }
-            to { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fdd835, 0 0 40px #fdd835; }
+            from { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00ffcc, 0 0 20px #00ffcc; }
+            to { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ffcc, 0 0 40px #00ffcc; }
         }
 
         .features {
@@ -153,8 +153,8 @@
         }
 
         .feature-box {
-            background: rgba(106, 17, 203, 0.2);
-            border: 1px solid rgba(106, 17, 203, 0.3);
+            background: rgba(0, 114, 255, 0.2);
+            border: 1px solid rgba(0, 255, 255, 0.3);
             border-radius: 8px;
             padding: 15px;
             transition: all 0.3s ease;
@@ -162,14 +162,14 @@
 
         .feature-box:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
-            background: rgba(106, 17, 203, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 114, 255, 0.4);
+            background: rgba(0, 114, 255, 0.3);
         }
 
         .feature-title {
             font-weight: 700;
             margin-bottom: 5px;
-            color: #a5d6a7;
+            color: #64ffda;
         }
 
         .feature-desc {
@@ -184,7 +184,7 @@
         }
 
         .author {
-            color: #fdd835;
+            color: #00ffcc;
             font-weight: 700;
             text-decoration: none;
             position: relative;
@@ -197,7 +197,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #fdd835;
+            background: #00ffcc;
             transition: width 0.3s ease;
         }
 
@@ -219,7 +219,7 @@
             position: absolute;
             width: 4px;
             height: 4px;
-            background: rgba(253, 216, 53, 0.7);
+            background: rgba(0, 255, 204, 0.7);
             border-radius: 50%;
             animation: particle-float linear infinite;
         }
@@ -230,6 +230,41 @@
             90% { opacity: 1; }
             100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
         }
+
+        .cmd-highlight {
+            color: #00ffcc;
+            font-weight: 700;
+            text-shadow: 0 0 5px rgba(0, 255, 204, 0.5);
+        }
+
+        .tech-stack {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        .tech-title {
+            color: #64ffda;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .tech-items {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-item {
+            background: rgba(0, 114, 255, 0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -237,45 +272,55 @@
     
     <div class="container">
         <div class="title-box">
-            <h1>BWM XMD QUANTUM</h1>
-            <p class="subtitle">Experience the Next Generation AI</p>
+            <h1>MSELACHUI XMD QUANTUM</h1>
+            <p class="subtitle">Advanced AI Command Processing System</p>
         </div>
         
         <div class="status-box">
-            <p class="status-text glow">SYSTEM STATUS: OPERATIONAL</p>
+            <p class="status-text glow">SYSTEM STATUS: ACTIVE & LEARNING</p>
         </div>
         
         <div class="emoji-container">
-            <div class="emoji">🧬</div>
             <div class="emoji">⚡</div>
-            <div class="emoji">💡</div>
-            <div class="emoji">✨</div>
-            <div class="emoji">🌟</div>
+            <div class="emoji">🔮</div>
+            <div class="emoji">🤖</div>
+            <div class="emoji">💻</div>
+            <div class="emoji">🌌</div>
         </div>
         
-        <p>Enjoy the all-new <span class="glow" style="font-weight:700;">BWM XMD Quantum</span> experience!</p>
+        <p>Welcome to <span class="glow cmd-highlight">MSELACHUI XMD Quantum</span> - The Ultimate Command Bot Experience!</p>
+        
+        <div class="tech-stack">
+            <div class="tech-title">Powered By:</div>
+            <div class="tech-items">
+                <div class="tech-item">Quantum ML</div>
+                <div class="tech-item">Neural Networks</div>
+                <div class="tech-item">Blockchain</div>
+                <div class="tech-item">Cloud AI</div>
+            </div>
+        </div>
         
         <div class="features">
             <div class="feature-box">
-                <div class="feature-title">Quantum Speed</div>
-                <div class="feature-desc">Lightning-fast responses powered by quantum algorithms</div>
+                <div class="feature-title">Smart Command Parsing</div>
+                <div class="feature-desc">Understands natural language commands with contextual awareness</div>
             </div>
             <div class="feature-box">
-                <div class="feature-title">AI Evolution</div>
-                <div class="feature-desc">Continuously learning and improving neural networks</div>
+                <div class="feature-title">Real-time Processing</div>
+                <div class="feature-desc">Instant response with sub-millisecond latency</div>
             </div>
             <div class="feature-box">
-                <div class="feature-title">Secure</div>
-                <div class="feature-desc">Military-grade encryption for all communications</div>
+                <div class="feature-title">Multi-Platform</div>
+                <div class="feature-desc">Works on Discord, Telegram, Slack & Web Interfaces</div>
             </div>
             <div class="feature-box">
-                <div class="feature-title">24/7 Uptime</div>
-                <div class="feature-desc">99.99% availability with global server distribution</div>
+                <div class="feature-title">Self-Optimizing</div>
+                <div class="feature-desc">Continuously improves performance through machine learning</div>
             </div>
         </div>
         
         <div class="footer">
-            Crafted with <span style="color:#f44336;">❤</span> by <a href="#" class="author">Ibrahim Adams</a>
+            Created with <span style="color:#00ffcc;">⚡</span> by <a href="#" class="author">MSELACHUI Dev Team</a>
         </div>
     </div>
 
@@ -283,7 +328,7 @@
         // Create quantum particles
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
+            const particleCount = 35;
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
@@ -291,7 +336,7 @@
                 
                 // Random position
                 const posX = Math.random() * 100;
-                const posY = Math.random() * 100 + 100; // Start below viewport
+                const posY = Math.random() * 100 + 100;
                 particle.style.left = `${posX}%`;
                 particle.style.top = `${posY}%`;
                 
@@ -315,7 +360,7 @@
         // Initialize particles
         createParticles();
         
-        // Add hover effect to container
+        // Add interactive 3D effect
         const container = document.querySelector('.container');
         container.addEventListener('mousemove', (e) => {
             const x = e.clientX / window.innerWidth;
@@ -327,6 +372,22 @@
         container.addEventListener('mouseleave', () => {
             container.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
         });
+        
+        // Dynamic status message rotation
+        const statusMessages = [
+            "SYSTEM STATUS: ACTIVE & LEARNING",
+            "PROCESSING: 1000+ COMMANDS/SEC",
+            "AI MODELS: OPTIMIZED",
+            "CONNECTIONS: STABLE"
+        ];
+        
+        let statusIndex = 0;
+        const statusElement = document.querySelector('.status-text');
+        
+        setInterval(() => {
+            statusIndex = (statusIndex + 1) % statusMessages.length;
+            statusElement.textContent = statusMessages[statusIndex];
+        }, 3000);
     </script>
 </body>
 </html>
