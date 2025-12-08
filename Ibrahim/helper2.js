@@ -1,6 +1,6 @@
 
 // utils/contextManager.js
-const NEWS_LETTER_JID = "120363423408733726@newslatter";
+const NEWS_LETTER_JID = "120363423019441144@newslatter";
 const BOT_NAME = "𝙈𝙎𝙀𝙇𝘼-𝘾𝙃𝙐𝙄-T𝙑";
 const thumbnails = [
                 " https://files.catbox.moe/pkqe7x.jpeg",
