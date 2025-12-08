@@ -1,4 +1,4 @@
-const NEWS_LETTER_JID = "120363423408733726@newslatter"; // Replace with your real one
+const NEWS_LETTER_JID = "120363423019441144@newslatter"; // Replace with your real one
 const BOT_NAME = "𝙈𝙎𝙀𝙇𝘼-𝘾𝙃𝙐𝙄-T𝙑";
 const DEFAULT_THUMBNAIL = "https://files.catbox.moe/pkqe7x.jpeg";
 
