@@ -776,17 +776,17 @@ zk.ev.on('group-participants.update', async (group) => {
         zk.ev.on("connection.update", async (con) => {
             const { lastDisconnect, connection } = con;
             if (connection === "connecting") {
-                console.log("ℹ️ 𝛭𝑆𝛯𝐿𝛥-𝐶𝛨𝑈𝛪-𝑇𝛭𝐷-𝐵𝛩𝑇 is connecting...");
+                console.log("ℹ️ 𝑀𝑆𝐸𝐿𝐴-𝐶𝐻𝑈𝐼-𝑋𝑀𝐷-𝐵𝛩𝑇 is connecting...");
             }
             else if (connection === 'open') {
-                console.log("✅ 𝛭𝑆𝛯𝐿𝛥-𝐶𝛨𝑈𝛪-𝑇𝛭𝐷-𝐵𝛩𝑇- Connected to WhatsApp! ☺️");
+                console.log("✅ 𝑀𝑆𝐸𝐿𝐴-𝐶𝐻𝑈𝐼-𝑋𝑀𝐷-𝐵𝛩𝑇- Connected to WhatsApp! ☺️");
                 console.log("--");
                 await (0, baileys_1.delay)(200);
                 console.log("------");
                 await (0, baileys_1.delay)(300);
                 console.log("------------------/-----");
-                console.log("𝛭𝑆𝛯𝐿𝛥-𝐶𝛨𝑈𝛪-𝑇𝛭𝐷-𝐵𝛩𝑇 is Online 🕸\n\n");
-                console.log("Loading 𝛭𝑆𝛯𝐿𝛥-𝐶𝛨𝑈𝛪-𝑇𝛭𝐷-𝐵𝛩𝑇 Commands ...\n");
+                console.log("𝑀𝑆𝐸𝐿𝐴-𝐶𝐻𝑈𝐼-𝑋𝑀𝐷-𝐵𝛩𝑇 is Online 🕸\n\n");
+                console.log("Loading 𝑀𝑆𝐸𝐿𝐴-𝐶𝐻𝑈𝐼-𝑋𝑀𝐷-𝐵𝛩𝑇 Commands ...\n");
                 fs.readdirSync(__dirname + "/commandes").forEach((fichier) => {
                     if (path.extname(fichier).toLowerCase() == (".js")) {
                         try {
@@ -816,9 +816,9 @@ zk.ev.on('group-participants.update', async (group) => {
                 
                 if((conf.DP).toLowerCase() === 'yes') {     
 
-                let cmsg =`      𝛭𝑆𝛯𝐿𝛥-𝐶𝛨𝑈𝛪-𝑇𝛭𝐷-𝐵𝛩𝑇
+                let cmsg =`      𝑀𝑆𝐸𝐿𝐴-𝐶𝐻𝑈𝐼-𝑋𝑀𝐷-𝐵𝛩𝑇
 ╭─────────────━┈⊷ 
-│🌏 𝛭𝑆𝛯𝐿𝛥-𝐶𝛨𝑈𝛪-𝑇𝛭𝐷-𝐵𝛩𝑇 CONNECTED
+│🌏 𝑀𝑆𝐸𝐿𝐴-𝐶𝐻𝑈𝐼-𝑋𝑀𝐷-𝐵𝛩𝑇 CONNECTED
 │💫 ᴘʀᴇғɪx: *[ ${prefixe} ]*
 │⭕ ᴍᴏᴅᴇ: *${md}*
 ╰─────────────━┈⊷⁠⁠⁠⁠`;
